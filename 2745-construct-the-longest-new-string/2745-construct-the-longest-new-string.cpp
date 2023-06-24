@@ -60,9 +60,9 @@ public:
     {
         memset(dp,-1,sizeof(dp));
         int f1=find(x,y,z,"AA");
-         memset(dp,-1,sizeof(dp));
+        memset(dp,-1,sizeof(dp));
         int f2=find(x,y,z,"BB");
-         memset(dp,-1,sizeof(dp));
+        memset(dp,-1,sizeof(dp));
         int f3=find(x,y,z,"AB");
         return max({f1,f2,f3});
     }
