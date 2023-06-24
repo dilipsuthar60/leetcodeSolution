@@ -17,14 +17,39 @@ public:
         int take2=find(nums,index+1,diff-nums[index]);
         return dp[index][diff+5000]= max({not_take,take1,take2});
     }
-    int tallestBillboard(vector<int>& rods) {
-        n=rods.size();
-        memset(dp,-1,sizeof(dp));
-        int value=find(rods,0,0);
-        if(value<0)
+//     dp = dict()
+//         dp[0] = 0
+        
+//         for i in rods:
+//             cur = collections.defaultdict(int)
+//             for s in dp:
+//                 cur[s+i] = max(dp[s] + i, cur[s+i])
+//                 cur[s] = max(dp[s], cur[s])
+//                 cur[s-i] = max(dp[s], cur[s-i])
+//             dp = cur
+//         return dp[0]
+    int tallestBillboard(vector<int>&nums) {
+        n=nums.size();
+        unordered_map<int,int>dp1;
+        dp1[0]=0;
+        for(int i=0;i<n;i++)
         {
-            return 0;
+            unordered_map<int,int>dp2;
+            for(auto &[key,value]:dp1)
+            {
+                dp2[nums[i]+key]=max(dp2[nums[i]+key],nums[i]+dp1[key]);
+                dp2[key-nums[i]]=max(dp2[key-nums[i]],dp1[key]);
+                dp2[key]=max(dp2[key],dp1[key]);
+            }
+            dp1=dp2;
         }
-        return value;
+        return dp1[0];
+        // memset(dp,-1,sizeof(dp));
+        // int value=find(rods,0,0);
+        // if(value<0)
+        // {
+        //     return 0;
+        // }
+        // return value;
     }
 };
