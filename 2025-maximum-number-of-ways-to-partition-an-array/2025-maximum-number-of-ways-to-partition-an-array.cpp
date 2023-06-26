@@ -23,7 +23,7 @@ public:
             if(new_sum%2==0)
             {
                 long long left_part=new_sum/2;
-                long long right_part=new_sum/2-(k-nums[i]);
+                long long right_part=(new_sum/2-k+nums[i]);
                 ans=max(ans,left[left_part]+right[right_part]);
             }
             left[pref]++;
