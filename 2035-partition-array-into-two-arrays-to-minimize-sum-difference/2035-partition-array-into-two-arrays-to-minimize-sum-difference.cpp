@@ -31,7 +31,7 @@ public:
         {
             int new_size=N-size;
             sort(right[new_size].begin(),right[new_size].end());
-            for(auto value:left[size])
+            for(auto &value:left[size])
             {
                 auto it=lower_bound(right[new_size].begin(),right[new_size].end(),total/2-value);
                 if(it!=right[new_size].end())
