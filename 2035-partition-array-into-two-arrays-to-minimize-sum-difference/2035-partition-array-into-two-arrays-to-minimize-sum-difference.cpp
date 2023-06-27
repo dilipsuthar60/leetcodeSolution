@@ -38,11 +38,11 @@ public:
                 {
                     ans=min(ans,abs(total-2*(*it+value)));
                 }
-                if(it!=right[new_size].begin())
-                {
-                    it--;
-                    ans=min(ans,abs(total-2*(*it+value)));
-                }
+                // if(it!=right[new_size].begin())
+                // {
+                //     it--;
+                //     ans=min(ans,abs(total-2*(*it+value)));
+                // }
             }
         }
         return ans;
