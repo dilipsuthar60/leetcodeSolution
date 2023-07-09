@@ -10,13 +10,14 @@ public:
         {
             if(mp.find(moveFrom[i])!=mp.end())
             {
-                mp.erase(moveFrom[i]);
+                mp[moveFrom[i]]=0;
                 mp[moveTo[i]]=moveTo[i];
             }
         }
         vector<int>ans;
         for(auto &[a,b]:mp)
         {
+            if(b)
             ans.push_back(b);
         }
         sort(ans.begin(),ans.end());
