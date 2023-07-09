@@ -8,8 +8,11 @@ public:
         {
             sum=sum<<1|(s[i]-'0');
         }
-        
-        return 15625 %sum==0;
+        while(sum%5==0)
+        {
+            sum/=5;
+        }
+        return sum==1;
     }
     int find(string &s,int index)
     {
