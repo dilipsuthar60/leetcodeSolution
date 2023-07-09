@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> relocateMarbles(vector<int>& nums, vector<int>& moveFrom, vector<int>& moveTo) {
-        map<int,int>mp;
+        unordered_map<int,int>mp;
         for(auto it:nums)
         {
             mp[it]=it;
@@ -19,6 +19,7 @@ public:
         {
             ans.push_back(b);
         }
+        sort(ans.begin(),ans.end());
         return ans;
     }
 };
