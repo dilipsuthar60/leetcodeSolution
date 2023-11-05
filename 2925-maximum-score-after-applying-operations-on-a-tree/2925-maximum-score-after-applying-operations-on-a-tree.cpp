@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int>dp[100005];
+    vector<vector<int>>dp;
     long long find(int node,int p,vector<int>&nums)
     {
         long long currentSum=0;
@@ -18,6 +18,7 @@ public:
         return 1ll*nums[node];
     }
     long long maximumScoreAfterOperations(vector<vector<int>>& edges, vector<int>& values) {
+        dp=vector<vector<int>>(values.size()+1);
         for(auto &it:edges)
         {
             dp[it[0]].push_back(it[1]);
