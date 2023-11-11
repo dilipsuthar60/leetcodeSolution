@@ -1,8 +1,7 @@
 class Graph {
 public:
-    vector<vector<pair<int,int>>>dp;
+    vector<pair<int,int>>dp[200];
     Graph(int n, vector<vector<int>>& edges) {
-        dp=vector<vector<pair<int,int>>>(n+1);
         for(auto it:edges)
         {
             dp[it[0]].push_back({it[1],it[2]});
@@ -14,11 +13,10 @@ public:
     }
     
     int shortestPath(int node1, int node2) {
-        int n=dp.size()+1;
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
-        pq.push({0,node1});
-        vector<int>dis(n,INT_MAX);
-        vector<int>vis(n,0);
+            pq.push({0,node1});
+        vector<int>dis(20000,INT_MAX);
+        vector<int>vis(20000,0);
         dis[node1]=0;
         while(pq.size())
         {
