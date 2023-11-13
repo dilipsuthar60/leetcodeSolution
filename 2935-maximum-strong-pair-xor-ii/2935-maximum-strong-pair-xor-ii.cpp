@@ -44,12 +44,12 @@ public:
         int ans=0;
         for(int i=0,j=0;i<n;i++)
         {
-            insert(nums[i],1);
             while(nums[i]-nums[j]>nums[j])
             {
                 insert(nums[j],-1);
                 j++;
             }
+            insert(nums[i],1);
             ans=max(ans,find(nums[i]));
         }
         return ans;
