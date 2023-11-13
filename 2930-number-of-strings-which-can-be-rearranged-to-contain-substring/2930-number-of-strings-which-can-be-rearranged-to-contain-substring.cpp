@@ -1,45 +1,47 @@
-class Solution {
-public:
-    int mod=1e9+7;
+class Solution
+{
+    public:
+    int mod = 1e9 + 7;
     long long dp[100005][2][2][2][2];
-    long long find(int n,int index,int a,int b,int c,int d)
+    long long find(int n, int index, int a, int b, int c, int d)
     {
-        if(index==n)
+        if (index == n)
         {
-            return a==1&&b==1&&c==1&&d==1;
+            return a == 1 && b == 1 && c == 1 && d == 1;
         }
-        if(dp[index][a][b][c][d]!=-1)
+        if (dp[index][a][b][c][d] != -1)
         {
-            return dp[index][a][b][c][d]%mod;
+            return dp[index][a][b][c][d] % mod;
         }
-        long long ans=0;
-        for(char ch='a';ch<='z';ch++)
+        long long ans = 0;
+        for (char ch = 'a'; ch <= 'z'; ch++)
         {
-            if(ch=='l'&&a==0)
+            if (ch == 'l' && a == 0)
             {
-                ans+=find(n,index+1,1,b,c,d);
+                ans += find(n, index + 1, 1, b, c, d);
             }
-            else if(ch=='e'&&b==0)
+            else if (ch == 'e' && b == 0)
             {
-                ans+=find(n,index+1,a,1,c,d);
+                ans += find(n, index + 1, a, 1, c, d);
             }
-            else if(ch=='e'&&c==0)
+            else if (ch == 'e' && c == 0)
             {
-                ans+=find(n,index+1,a,b,1,d);
+                ans += find(n, index + 1, a, b, 1, d);
             }
-            else if(ch=='t'&&d==0)
+            else if (ch == 't' && d == 0)
             {
-                ans+=find(n,index+1,a,b,c,1);
+                ans += find(n, index + 1, a, b, c, 1);
             }
             else
             {
-                ans+=find(n,index+1,a,b,c,d);
+                ans += find(n, index + 1, a, b, c, d);
             }
         }
-        return dp[index][a][b][c][d] = ans%mod;
+        return dp[index][a][b][c][d] = ans % mod;
     }
-    int stringCount(int n) {
-        memset(dp,-1,sizeof(dp));
-        return find(n,0,0,0,0,0)%mod;
+    int stringCount(int n)
+    {
+        memset(dp, -1, sizeof(dp));
+        return find(n, 0, 0, 0, 0, 0) % mod;
     }
 };
