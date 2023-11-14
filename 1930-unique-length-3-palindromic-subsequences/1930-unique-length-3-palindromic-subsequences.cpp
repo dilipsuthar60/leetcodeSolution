@@ -1,9 +1,8 @@
 class Solution {
 public:
-    int countPalindromicSubsequence(string s) 
-    {
-        int n=s.size();
+    int countPalindromicSubsequence(string s) {
         vector<int>left(26,-1),right(26,-1);
+        int n=s.size();
         for(int i=0;i<n;i++)
         {
             if(left[s[i]-97]==-1)
@@ -15,19 +14,18 @@ public:
         int count=0;
         for(int i=0;i<26;i++)
         {
-            int l=left[i];
-            int r=right[i];
-            if(l!=-1&&r!=-1)
+            vector<int>visited(26,0);
+            if(left[i]==-1||right[i]==-1)
             {
-            vector<int>v(26,0);
-            for(int i=l+1;i<r;i++)
+                continue;
+            }
+            for(int j=left[i]+1;j<right[i];j++)
             {
-                if(v[s[i]-97]==0)
+                if(visited[s[j]-97]==0)
                 {
-                    v[s[i]-97]=1;
+                    visited[s[j]-97]=1;
                     count++;
                 }
-            }
             }
         }
         return count;
