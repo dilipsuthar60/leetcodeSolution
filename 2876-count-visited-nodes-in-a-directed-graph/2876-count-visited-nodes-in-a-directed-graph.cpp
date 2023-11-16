@@ -40,7 +40,6 @@ public:
         for(auto it:dp[node])
         {
             sum+=dfs(it);
-            ans[node]=sum;
         }
         return sum;
     }
