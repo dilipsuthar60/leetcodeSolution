@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int>dp[30007];
+    vector<vector<int>>dp;
     int count=0;
     int find(int node,vector<int>&value,int k,int p=-1)
     {
@@ -20,6 +20,7 @@ public:
     }
     int maxKDivisibleComponents(int n, vector<vector<int>>& edges, vector<int>& values, int k) 
     {
+        dp=vector<vector<int>>(n+10);
         for(auto &it:edges)
         {
             dp[it[0]].push_back(it[1]);
