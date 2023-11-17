@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
 public:
     vector<int>dp[100005];
     vector<int>ans;
@@ -30,7 +31,7 @@ public:
         }
         vis[node]=2;
     }
-    int  dfs(int node)
+    int dfs(int node)
     {
         if(ans[node]!=-1)
         {
