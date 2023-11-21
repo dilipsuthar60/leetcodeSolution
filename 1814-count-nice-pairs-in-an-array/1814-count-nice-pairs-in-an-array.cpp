@@ -20,13 +20,10 @@ public:
         }
         long long  ans=0;
         const int m=1e9+7;
-        for(auto it:mp)
+        for(auto &it:mp)
         {
-            if(it.second>=2)
-            {
                 long long n=it.second;
                 ans=ans+((n%m)*((n-1)%m)/2)%m;
-            }
         }
         return ans%m;
     }
