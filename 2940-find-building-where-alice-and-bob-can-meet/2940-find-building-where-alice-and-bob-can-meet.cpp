@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int tree[50000*3];
+    int tree[50001*3];
     void build(int index,vector<int>&nums,int l,int r)
     {
         if(l==r)
