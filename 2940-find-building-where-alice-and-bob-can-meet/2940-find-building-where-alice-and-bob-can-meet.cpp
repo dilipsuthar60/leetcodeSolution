@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int tree[50001*3];
+    vector<int>tree;
     void build(int index,vector<int>&nums,int l,int r)
     {
         if(l==r)
@@ -29,7 +29,7 @@ public:
     vector<int> leftmostBuildingQueries(vector<int>&nums, vector<vector<int>>& q) 
     {
         int n=nums.size();
-        memset(tree,0,sizeof(tree));
+        tree=vector<int>(n*4+10);
         build(0,nums,0,n-1);
         vector<int>ans(q.size(),-1);
         for(int i=0;i<q.size();i++)
@@ -45,11 +45,6 @@ public:
                 ans[i]=r;
                 continue;
             }
-            // if(nums[l]<nums[r])
-            // {
-            //     ans[i]=r;
-            //     continue;
-            // }
             int left=r+1;
             int right=n-1;
             while(left<=right)
