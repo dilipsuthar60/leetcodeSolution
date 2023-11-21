@@ -40,16 +40,16 @@ public:
             {
                 swap(l,r);
             }
-            if(l==r)
-            {
-                ans[i]=l;
-                continue;
-            }
-            if(nums[l]<nums[r])
+            if(l==r||nums[l]<nums[r])
             {
                 ans[i]=r;
                 continue;
             }
+            // if(nums[l]<nums[r])
+            // {
+            //     ans[i]=r;
+            //     continue;
+            // }
             int left=r+1;
             int right=n-1;
             while(left<=right)
