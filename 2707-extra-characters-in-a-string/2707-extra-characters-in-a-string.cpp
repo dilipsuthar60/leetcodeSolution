@@ -1,7 +1,7 @@
 class Solution {
 public:
-    unordered_set<string>st;
-    int dp[60];
+    unordered_set<string>vis;
+    int dp[51];
     int find(string &s,int index)
     {
         if(index>=s.size())
@@ -13,25 +13,23 @@ public:
             return dp[index];
         }
         int ans=0;
-        string curr="";
+        string str="";
         for(int i=index;i<s.size();i++)
         {
-            curr.push_back(s[i]);
-            if(st.find(curr)!=st.end())
+            str.push_back(s[i]);
+            if(vis.find(str)!=vis.end())
             {
-              ans=max(ans,(int)curr.size()+find(s,i+1));
+                ans=max(ans,(int)str.size()+find(s,i+1));
             }
         }
         ans=max(ans,find(s,index+1));
-        return dp[index]= ans;
+        return dp[index] = ans;
     }
-    int minExtraChar(string s, vector<string>& dic) {
-        for(auto it:dic)
-        {
-            st.insert(it);
+    int minExtraChar(string s, vector<string>& dictionary) {
+        for(auto it:dictionary){
+            vis.insert(it);
         }
         memset(dp,-1,sizeof(dp));
-        int val=find(s,0);
-        return s.size()-val;
+        return s.size()-find(s,0);
     }
 };
