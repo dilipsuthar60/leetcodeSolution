@@ -25,14 +25,6 @@ public:
         }
         sort(temp1.rbegin(),temp1.rend());
         sort(temp2.begin(),temp2.end());
-        while(temp1.size()>3)
-        {
-            temp1.pop_back();
-        }
-        while(temp2.size()>3)
-        {
-            temp2.pop_back();
-        }
         for(int i=0;i<min(3,(int)temp1.size());i++)
         {
             pos[node].push_back(temp1[i]);
@@ -40,6 +32,14 @@ public:
         for(int i=0;i<min(3,(int)temp2.size());i++)
         {
             neg[node].push_back(temp2[i]);
+        }
+        while(temp1.size()>3)
+        {
+            temp1.pop_back();
+        }
+        while(temp2.size()>3)
+        {
+            temp2.pop_back();
         }
         return {temp1,temp2};
     }
