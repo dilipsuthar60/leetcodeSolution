@@ -1,9 +1,9 @@
 class Solution {
 public:
-    vector<int>dp[100003];
+    vector<vector<int>>dp;
     vector<int>cost;
-    vector<int>pos[20005];
-    vector<int>neg[20005];
+    vector<vector<int>>pos;
+    vector<vector<int>>neg;
     vector<vector<int>> find(int node,int p=-1)
     {
         vector<int>temp1={cost[node]};
@@ -47,6 +47,9 @@ public:
     {
         cost=Cost;
         int n=cost.size();
+        dp=vector<vector<int>>(n+1);
+        pos=vector<vector<int>>(n+1);
+        neg=vector<vector<int>>(n+1);
         for(auto it:edges)
         {
             dp[it[0]].push_back(it[1]);
