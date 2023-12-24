@@ -8,16 +8,16 @@ public:
     {
         vector<int>temp1={cost[node]};
         vector<int>temp2={cost[node]};
-        for(auto it:dp[node])
+        for(auto &it:dp[node])
         {
             if(it!=p)
             {
                vector<vector<int>>v=find(it,node);
-               for(auto t:v[0])
+               for(auto &t:v[0])
                {
                    temp1.push_back(t);
                }
-                for(auto t:v[1])
+                for(auto &t:v[1])
                 {
                     temp2.push_back(t);
                 }
@@ -50,7 +50,7 @@ public:
         dp=vector<vector<int>>(n+1);
         pos=vector<vector<int>>(n+1);
         neg=vector<vector<int>>(n+1);
-        for(auto it:edges)
+        for(auto &it:edges)
         {
             dp[it[0]].push_back(it[1]);
             dp[it[1]].push_back(it[0]);
