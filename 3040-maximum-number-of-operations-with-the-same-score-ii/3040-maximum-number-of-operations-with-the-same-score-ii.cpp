@@ -25,7 +25,9 @@ public:
         n=nums.size();
         memset(dp,-1,sizeof(dp));
         int firstOperation=find(nums,nums[0]+nums[1],2,n-1);
+        memset(dp,-1,sizeof(dp));
         int secondOperation=find(nums,nums[n-1]+nums[n-2],0,n-3);
+        memset(dp,-1,sizeof(dp));
         int thirdOperation=find(nums,nums[0]+nums[n-1],1,n-2);
         return 1+max({firstOperation,secondOperation,thirdOperation});
     }
