@@ -7,10 +7,13 @@ public:
     vector<int>primeFactor(int n)
     {
         vector<int>factor;
+        unordered_set<int>s;
         while(n>1)
         {
             int f=prime[n];
-            factor.push_back(f);
+            if(s.find(f)==s.end())
+             factor.push_back(f);
+            s.insert(f);
             n/=f;
         }
         return factor;
@@ -61,8 +64,10 @@ public:
         {
             for(auto it:primeFactor(nums[i]))
             {
+                cout<<it<<" ";
                 mp[it].push_back(i);
             }
+            cout<<endl;
         }
         for(auto &[_,v]:mp)
         {
