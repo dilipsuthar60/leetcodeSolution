@@ -2,6 +2,7 @@ class Solution {
 public:
     vector<int>parent;
     vector<int>prime;
+    vector<int>rank;
     const int N=1e5+10;
     vector<int>primeFactor(int n)
     {
@@ -27,12 +28,21 @@ public:
         x=find(x);
         y=find(y);
         if(x==y) return ;
-        parent[x]=y;
+        if(rank[x]<rank[y])
+        {
+            rank[y]+=rank[x];
+            parent[x]=y;
+        }
+        else{
+            rank[x]+=rank[y];
+            parent[y]=x;
+        }
     }
     bool canTraverseAllPairs(vector<int>& nums) 
     {
         int n=nums.size();
         parent=vector<int>(n+1);
+        rank=vector<int>(n+1,1);
         prime=vector<int>(N);
         iota(parent.begin(),parent.end(),0);
         iota(prime.begin(),prime.end(),0);
