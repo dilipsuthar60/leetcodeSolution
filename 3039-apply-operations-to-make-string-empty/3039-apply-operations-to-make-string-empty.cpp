@@ -11,7 +11,7 @@ public:
             maxFrequency=max(maxFrequency,(int)mp[s[i]].size());
         }
         vector<int>secondLastCharacterIndex;
-        for(auto [_,v]:mp)
+        for(auto &[_,v]:mp)
         {
             if(v.size()==maxFrequency)
             secondLastCharacterIndex.push_back(v.back());
