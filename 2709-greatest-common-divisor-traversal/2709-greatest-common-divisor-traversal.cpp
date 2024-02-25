@@ -64,10 +64,8 @@ public:
         {
             for(auto it:primeFactor(nums[i]))
             {
-                cout<<it<<" ";
                 mp[it].push_back(i);
             }
-            cout<<endl;
         }
         for(auto &[_,v]:mp)
         {
