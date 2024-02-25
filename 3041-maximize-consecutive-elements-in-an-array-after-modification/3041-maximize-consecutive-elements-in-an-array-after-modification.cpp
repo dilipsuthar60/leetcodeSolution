@@ -3,7 +3,7 @@ public:
     int maxSelectedElements(vector<int>& nums) {
         int n=nums.size();
         sort(nums.begin(),nums.end());
-        unordered_map<int,int>dp;
+        vector<int>dp(nums.back()+3,0);
         int ans=0;
         for(int i=n-1;i>=0;i--)
         {
