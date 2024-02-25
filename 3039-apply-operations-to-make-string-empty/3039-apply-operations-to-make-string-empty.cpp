@@ -5,10 +5,10 @@ public:
         int n=s.size();
         unordered_map<char,vector<int>>mp;
         int maxFrequency=0;
-        for(int i=0;i<n;i++)
+        for(int index=0;index<n;index++)
         {
-            mp[s[i]].push_back(i);
-            maxFrequency=max(maxFrequency,(int)mp[s[i]].size());
+            mp[s[index]].push_back(index);
+            maxFrequency=max(maxFrequency,(int)mp[s[index]].size());
         }
         vector<int>secondLastCharacterIndex;
         for(auto &[_,v]:mp)
