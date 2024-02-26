@@ -1,24 +1,51 @@
 class Solution {
 public:
+    class node{
+        public:
+        node*child[10]={NULL};
+    };
+    void insert(node*root,string &s)
+    {
+        node*current=root;
+        for(auto &it:s)
+        {
+            int index=it-'0';
+            if(current->child[index]==NULL)
+            {
+                current->child[index]=new node();
+            }
+            current=current->child[index];
+        }
+    }
+    int longestPrefix(node*root,string &s)
+    {
+        node*current=root;
+        int len=0;
+        for(auto &it:s)
+        {
+            int index=it-'0';
+            if(current->child[index]==NULL)
+            {
+                return len;
+            }
+            len++;
+            current=current->child[index];
+        }
+        return len;
+    }
     int longestCommonPrefix(vector<int>& arr1, vector<int>& arr2) {
-        unordered_map<string,int>mp;
-        for(auto &it:arr1)
+        node*head=new node();
+        for(auto&it:arr1)
         {
             string s=to_string(it);
-            for(int i=0;i<s.size();i++)
-            {
-                mp[s.substr(0,i+1)]++;
-            }
+            insert(head,s);
         }
-        int ans=0;
+        int result=0;
         for(auto &it:arr2)
         {
             string s=to_string(it);
-            for(int i=0;i<s.size();i++)
-            {
-                if(mp.find(s.substr(0,i+1))!=mp.end()) ans=max(ans,i+1);
-            }
+            result=max(result,longestPrefix(head,s));
         }
-        return ans;
+        return result;
     }
 };
