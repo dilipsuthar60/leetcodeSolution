@@ -28,39 +28,23 @@ public:
         }
         return lps;
     }
-    string convertToString(vector<int>&v)
-    {
-        string s="";
-        for(int i=0;i<v.size();i++)
-        {
-            if(v[i]==-1){
-                s+='2';
-            }
-            else
-            s+=to_string(v[i]);
-        }
-        return s;
-    }
     int countMatchingSubarrays(vector<int>& nums, vector<int>& pattern) {
-        vector<int>arr;
+        string text="";
+        string pat="";
         for(int i=0;i<nums.size()-1;i++)
         {
-            if(nums[i]<nums[i+1])
-            {
-                arr.push_back(1);
-            }
-            else if(nums[i]>nums[i+1])
-            {
-                arr.push_back(-1);
-            }
-            else
-            {
-                arr.push_back(0);
-            }
+            if(nums[i]<nums[i+1]) text+='a';
+            else if(nums[i]>nums[i+1]) text+='b';
+            else text+='c';
         }
-        string s1=convertToString(arr);
-        string s2=convertToString(pattern);
-        vector<int>lps=longestPrefix(s1,s2);
+        for(int i=0;i<pattern.size();i++)
+        {
+            if(pattern[i]==1) pat+='a';
+            else if(pattern[i]==-1) pat+='b';
+            else pat+='c';
+        }
+        cout<<text<<"   ll   "<<pat<<endl;
+        vector<int>lps=longestPrefix(text,pat);
         int count=0;
         for(auto it:lps)
         {
