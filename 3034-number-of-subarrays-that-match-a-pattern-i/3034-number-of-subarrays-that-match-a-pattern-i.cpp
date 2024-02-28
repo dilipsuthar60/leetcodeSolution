@@ -43,7 +43,7 @@ public:
             else if(pattern[i]==-1) pat+='b';
             else pat+='c';
         }
-        cout<<text<<"   ll   "<<pat<<endl;
+        
         vector<int>lps=longestPrefix(text,pat);
         int count=0;
         for(auto it:lps)
