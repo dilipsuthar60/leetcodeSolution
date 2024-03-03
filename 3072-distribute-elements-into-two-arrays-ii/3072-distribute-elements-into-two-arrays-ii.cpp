@@ -1,6 +1,6 @@
 class Solution {
 public:
-    const int N=1e5+10;
+    int N;
     void update(int i,int val,vector<int>&bit)
     {
         while(i<N)
@@ -21,6 +21,7 @@ public:
     }
     vector<int> resultArray(vector<int>& nums) 
     {
+        N=nums.size()+5;
         vector<int>bit1(N,0),bit2(N,0);
         vector<int>arr1,arr2;
         vector<int>temp=nums;
@@ -66,10 +67,7 @@ public:
                 }
             }
         }
-        for(auto it:arr2)
-        {
-            arr1.push_back(it);
-        }
+        for(auto &it:arr2) arr1.push_back(it);
         return arr1;
     }
 };
