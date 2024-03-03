@@ -11,7 +11,9 @@ public:
         {
             if(child!=parent)
             {
-                count+=find(graph,child,currentWeightSum+childWeight,signalSpeed,node);
+                currentWeightSum+=childWeight;
+                count+=find(graph,child,currentWeightSum,signalSpeed,node);
+                currentWeightSum-=childWeight;
             }
         }
         return count;
