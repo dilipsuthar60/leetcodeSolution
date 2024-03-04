@@ -13,6 +13,16 @@ public:
                 nums2.push_back(i);
             }
         }
+         for(auto &it:nums1)
+        {
+            cout<<it<<" ";
+        }
+        cout<<endl;
+          for(auto &it:nums2)
+        {
+            cout<<it<<" ";
+        }
+        cout<<endl;
         vector<int>ans;
         int i=0;
         int j=0;
