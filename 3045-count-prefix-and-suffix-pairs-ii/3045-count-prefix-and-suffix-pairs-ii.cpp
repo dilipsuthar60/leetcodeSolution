@@ -3,7 +3,7 @@ public:
     class node{
         public:
           int count=0;
-          map<pair<char,char>,node*>child;
+          map<int,node*>child;
     };
     int insert(string &s,node*head)
     {
@@ -11,13 +11,13 @@ public:
         int ans=0;
         for(int i=0;i<s.size();i++)
         {
-            char first=s[i];
-            char last=s[s.size()-i-1];
-            if(current->child.find({first,last})==current->child.end())
+            int first=s[i]-'a';
+            int last=s[s.size()-i-1]-'a';
+            if(current->child.find(first*97+last)==current->child.end())
             {
-                current->child[{first,last}] = new node();
+                current->child[first*97+last] = new node();
             }
-            current=current->child[{first,last}];
+            current=current->child[first*97+last];
             ans+=current->count;
         }
         current->count++;
