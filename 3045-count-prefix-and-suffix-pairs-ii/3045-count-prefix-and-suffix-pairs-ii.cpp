@@ -13,11 +13,11 @@ public:
         {
             int first=s[i]-'a';
             int last=s[s.size()-i-1]-'a';
-            if(current->child.find(first*97+last)==current->child.end())
+            if(current->child.find(first*11+last)==current->child.end())
             {
-                current->child[first*97+last] = new node();
+                current->child[first*11+last] = new node();
             }
-            current=current->child[first*97+last];
+            current=current->child[first*11+last];
             ans+=current->count;
         }
         current->count++;
