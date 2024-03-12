@@ -5,9 +5,8 @@ class Solution
         {
             long long result = 0;
             sort(nums.rbegin(), nums.rend());
-            for (int i = 0; i < k; i++)
+            for (int i = 0; i < k && nums[i]>i; i++)
             {
-                if(nums[i]-i<0) break;
                 result += (nums[i] - i);
             }
             return result;
