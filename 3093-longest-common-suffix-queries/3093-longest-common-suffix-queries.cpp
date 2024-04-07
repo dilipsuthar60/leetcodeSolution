@@ -11,9 +11,9 @@ public:
         node*current=root;
         int len=s.size();
         current->pt=min(current->pt,{len,postion});
-        for(int i=len-1;i>=0;i--)
+        for(auto &it:s)
         {
-            int index=s[i]-'a';
+            int index=it-'a';
             if(current->child[index]==NULL)
             {
                 current->child[index]=new node();
@@ -26,9 +26,9 @@ public:
     {
         int n=s.size();
         node*current=root;
-        for(int i=n-1;i>=0;i--)
+        for(auto &it:s)
         {
-            int index=s[i]-'a';
+            int index=it-'a';
             if(current->child[index]==NULL)
             {
                 return current->pt.second;
@@ -43,11 +43,13 @@ public:
         int index=0;
         for(auto &word:words)
         {
+            reverse(word.begin(),word.end());
             insert(word,index++);
         }
         vector<int>result;
         for(auto &query:querys)
         {
+            reverse(query.begin(),query.end());
             result.push_back(find(query));
         }
         return result;
