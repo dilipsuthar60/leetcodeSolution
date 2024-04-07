@@ -37,17 +37,18 @@ public:
         }
         return current->pt.second;;
     }
-    vector<int> stringIndices(vector<string>&word, vector<string>&query) 
+    vector<int> stringIndices(vector<string>&words, vector<string>&querys) 
     {
         root=new node();
-        for(int i=0;i<word.size();i++)
+        int index=0;
+        for(auto &word:words)
         {
-            insert(word[i],i);
+            insert(word,index++);
         }
         vector<int>result;
-        for(int i=0;i<query.size();i++)
+        for(auto &query:querys)
         {
-            result.push_back(find(query[i]));
+            result.push_back(find(query));
         }
         return result;
     }
