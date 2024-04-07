@@ -3,7 +3,7 @@ public:
     class node{
         public:
         node*child[26]={NULL};
-        pair<int,int>pt ={1e9,1e9};
+        pair<int,int>pt ={1e6,1e6};
     };
     node*root;
     void insert(string&s,int postion)
