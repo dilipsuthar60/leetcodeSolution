@@ -17,7 +17,6 @@ public:
                 {
                     first=i;
                 }
-                cout<<i<<" "<<first<<endl;
                 len=max(len,i-first);
             }
         }
