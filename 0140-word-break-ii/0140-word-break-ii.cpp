@@ -1,29 +1,26 @@
 class Solution {
 public:
-    void find(string s,string str,vector<string>&ans,unordered_set<string>&st)
-    {
-        if(s.size()==0)
-        {
-            str.pop_back();
-            ans.push_back(str);
+    unordered_set<string>st;
+    void find(string&s,int index,string curr,vector<string>&result){
+        if(index>=s.size()){
+            curr.pop_back();
+            result.push_back(curr);
             return ;
         }
-        for(int i=0;i<s.size();i++)
+        for(int i=index;i<s.size();i++)
         {
-            string left=s.substr(0,i+1);
-            if(st.count(left))
-            {
-                string right=s.substr(i+1);
-                find(right,str+left+" ",ans,st);
+            string current=s.substr(index,i-index+1);
+            if(st.count(current)){
+                find(s,i+1,curr+current+" ",result);
             }
         }
-            
     }
-    vector<string> wordBreak(string s, vector<string>& word) 
-    {
-        unordered_set<string>st(word.begin(),word.end());
-        vector<string>ans;
-        find(s,"",ans,st);
-        return ans;
+    vector<string> wordBreak(string s, vector<string>& word) {
+        for(auto &it:word){
+            st.insert(it);
+        }
+        vector<string>result;
+        find(s,0,"",result);
+        return result;
     }
 };
