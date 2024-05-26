@@ -3,30 +3,14 @@ public:
     string compressedString(string word) {
         string ans="";
         int n=word.size();
-        char ch=word[0];
-        int currentCount=0;
-        for(int i=0;i<n;i++)
-        {
-            if(ch==word[i])
+        for(int i=0,j=0;i<n;i=j){
+            int count=0;
+            while(i<n&&word[i]==word[j]&&count<9)
             {
-                currentCount++;
-                if(currentCount==9)
-                {
-                    ans+=to_string(currentCount)+string(1,ch);
-                    currentCount=0;
-                }
+                count++;
+                j++;
             }
-            else
-            {
-                if(currentCount)
-                ans+=to_string(currentCount)+string(1,ch);
-                currentCount=1;
-                ch=word[i];
-            }
-        }
-        if(currentCount)
-        {
-            ans+=to_string(currentCount)+string(1,ch);
+            ans+=to_string(count)+word[i];
         }
         return ans;
     }
