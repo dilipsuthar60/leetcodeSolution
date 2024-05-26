@@ -3,30 +3,30 @@ public:
     string compressedString(string word) {
         string ans="";
         int n=word.size();
-        vector<pair<char,int>>v;
+        char ch=word[0];
+        int currentCount=0;
         for(int i=0;i<n;i++)
         {
-            if(v.size()&&v.back().first==word[i])
+            if(ch==word[i])
             {
-                v.back().second++;
+                currentCount++;
+                if(currentCount==9)
+                {
+                    ans+=to_string(currentCount)+string(1,ch);
+                    currentCount=0;
+                }
             }
-            else{
-                v.push_back({word[i],1});
+            else
+            {
+                if(currentCount)
+                ans+=to_string(currentCount)+string(1,ch);
+                currentCount=1;
+                ch=word[i];
             }
         }
-        for(auto item:v)
+        if(currentCount)
         {
-            int currentCount=item.second;
-            char ch=item.first;
-            while(currentCount>=9)
-            {
-                ans+=to_string(9)+string(1,ch);
-                currentCount-=9;
-            }
-            if(currentCount)
-            {
-                ans+=to_string(currentCount)+string(1,ch);
-            }
+            ans+=to_string(currentCount)+string(1,ch);
         }
         return ans;
     }
