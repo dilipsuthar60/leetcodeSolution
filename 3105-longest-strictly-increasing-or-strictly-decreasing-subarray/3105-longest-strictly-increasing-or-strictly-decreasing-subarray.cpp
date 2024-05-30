@@ -1,16 +1,11 @@
 class Solution {
 public:
     int find(vector<int>&nums){
-        int count=1;
         int result=1;
-        for(int i=1,n=nums.size();i<n;i++)
+        int size=nums.size();
+        for(int i=1,count=1;i<size;i++)
         {
-            if(nums[i-1]<nums[i]){
-                count++;
-            }
-            else{
-                count=1;
-            }
+            count=(nums[i-1]<nums[i]?count+1:1);
             result=max(result,count);
         }
         return result;
