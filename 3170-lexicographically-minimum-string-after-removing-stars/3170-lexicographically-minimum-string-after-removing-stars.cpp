@@ -3,15 +3,15 @@ public:
     string clearStars(string s) {
         int n=s.size();
         vector<bool>visited(n,true);
-        set<pair<char,int>>st;
+        priority_queue<pair<char,int>,vector<pair<char,int>>,greater<pair<char,int>>>pq;
         for(int i=0;i<n;i++){
-            if(s[i]=='*'&&st.size()){
-                auto [ch,index]=*st.begin();
-                st.erase(st.begin());
+            if(s[i]=='*'&&pq.size()){
+                auto [ch,index]=pq.top();
+                pq.pop();
                 visited[-index]=false;
             }
             else{
-                st.insert({s[i],-i});
+                pq.push({s[i],-i});
             }
         }
         string result="";
