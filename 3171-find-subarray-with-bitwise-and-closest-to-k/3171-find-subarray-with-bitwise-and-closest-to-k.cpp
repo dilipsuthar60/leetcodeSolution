@@ -24,12 +24,10 @@ public:
             update(bit,nums[i],1);
             int andValue=getValue(bit,i-j+1);
             result=min(result,abs(andValue-k));
-            cout<<andValue<<"   "<<endl;
             while(j<=i&&andValue<k){
                 update(bit,nums[j],-1);
                 j++;
                 andValue=getValue(bit,i-j+1);
-                cout<<andValue<<"   "<<endl;
                 result=min(result,abs(andValue-k));
             }
         }
