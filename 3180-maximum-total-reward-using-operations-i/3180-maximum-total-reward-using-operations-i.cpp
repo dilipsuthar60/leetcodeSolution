@@ -12,7 +12,8 @@ public:
     }
     int maxTotalReward(vector<int>& nums) {
         memset(dp,-1,sizeof(dp));
-       sort(nums.begin(),nums.end()); 
-       return find(nums,0);
+        sort(nums.begin(),nums.end());
+        nums.erase(unique(nums.begin(),nums.end()),nums.end());
+        return find(nums,0);
     }
 };
