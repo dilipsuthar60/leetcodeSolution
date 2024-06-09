@@ -3,7 +3,8 @@ public:
     long long sumDigitDifferences(vector<int>& nums) {
         int n=nums.size();
         int sizeOfDigit=to_string(nums.front()).size();
-        vector<vector<long long>>map(sizeOfDigit,vector<long long>(10,0));
+        long long map[sizeOfDigit][10];
+        memset(map,0,sizeof(map));
         for(auto it:nums){
             string s=to_string(it);
             for(int i=0;i<s.size();i++)
