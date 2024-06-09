@@ -5,7 +5,7 @@ public:
         int sizeOfDigit=to_string(nums.front()).size();
         long long map[sizeOfDigit][10];
         memset(map,0,sizeof(map));
-        for(auto it:nums){
+        for(auto &it:nums){
             string s=to_string(it);
             for(int i=0;i<s.size();i++)
             {
