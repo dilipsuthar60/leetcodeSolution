@@ -13,9 +13,10 @@ public:
             }
             dp|=(dp&temp)<<nums[i];
         }
-        for(int i=dp.size()-1;i>=0;i--){
-            if(dp[i]) return i;
+        int index=dp.size()-1;
+        while(!dp[index]){
+            index--;
         }
-        return 0;
+        return index;
     }
 };
