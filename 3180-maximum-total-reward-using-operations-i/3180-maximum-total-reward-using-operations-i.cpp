@@ -11,8 +11,17 @@ public:
         return dp[index][sum] = result;
     }
     int maxTotalReward(vector<int>& nums) {
-        memset(dp,-1,sizeof(dp));
+        int n=nums.size();
         sort(nums.begin(),nums.end());
-        return find(nums,0);
+        set<int>s;
+        for(int i=0;i<n;i++)
+        {
+            for(auto it:s){
+                if(it>=nums[i]) break;
+                s.insert(nums[i]+it);
+            }
+            s.insert(nums[i]);
+        }
+        return *s.rbegin();
     }
 };
