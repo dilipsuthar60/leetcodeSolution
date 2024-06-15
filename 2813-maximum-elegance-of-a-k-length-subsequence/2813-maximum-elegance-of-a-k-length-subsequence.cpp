@@ -7,11 +7,12 @@ public:
         unordered_set<int>seen;
         vector<int>duplicateProfit;
         long long profit=0;
-        for(int i=0;i<size;i++)
+        int index=0;
+        for(auto &it:item)
         {
-            int currentProfit=item[i][0];
-            int currentCategory=item[i][1];
-            if(i<k){
+            int currentProfit=it[0];
+            int currentCategory=it[1];
+            if(index++<k){
                 if(seen.find(currentCategory)!=seen.end()){
                     duplicateProfit.push_back(currentProfit);
                 }
