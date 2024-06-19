@@ -1,14 +1,13 @@
 class Solution {
 public:
-    int bit[100005]={0};
-    const int N=100005;
+    vector<int>bit;
     bool isPeak(int index,vector<int>&nums)
     {
         return index>0&&index+1<nums.size()&&nums[index-1]<nums[index]&&nums[index]>nums[index+1];
     }
     void update(int i,int value){
         i++;
-        while(i<N){
+        while(i<bit.size()){
             bit[i]+=value;
             i+=(i&-i);
         }
@@ -24,6 +23,7 @@ public:
     }
     vector<int> countOfPeaks(vector<int>& nums, vector<vector<int>>& queries) {
         int n=nums.size();
+        bit.resize(n+1);
         for(int i=0;i<n;i++){
             if(isPeak(i,nums)){
                 update(i,1);
