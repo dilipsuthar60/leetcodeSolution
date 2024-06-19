@@ -26,7 +26,6 @@ public:
         int n=nums.size();
         for(int i=0;i<n;i++){
             if(isPeak(i,nums)){
-                cout<<"peak"<<" "<<index<<endl;
                 update(i,1);
             }
         }
