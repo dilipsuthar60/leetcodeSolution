@@ -40,7 +40,6 @@ public:
         auto [Node1,diameter1] =find(graph1,farNode1,n);
         auto [farNode2,level2] = find(graph2,0,m);
         auto [Node2,diameter2] =find(graph2,farNode2,m);
-        cout<<diameter1<<"  "<<diameter2<<endl;
         return max({diameter1,diameter2,(diameter1+1)/2+(diameter2+1)/2+1});
     }
 };
