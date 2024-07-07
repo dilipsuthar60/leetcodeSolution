@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void find(int index,int n,string curr,vector<string>&res){
+    void find(int index,int n,string &curr,vector<string>&res){
         if(index==n){
             res.push_back(curr);
             return ;
