@@ -2,8 +2,8 @@ class Solution {
 public:
     int maxEqualFreq(vector<int>& nums) {
         int n=nums.size();
-        unordered_map<int,int>freq;
-        unordered_map<int,int>element_freq;
+        int freq[100005]={0};
+        int element_freq[100005]={0};
         int ans=1;
         for(int i=0;i<n;i++){
             freq[nums[i]]++;
