@@ -26,7 +26,7 @@ public:
                 curr.insert(it|nums[i]);
             }
             curr.insert(nums[i]);
-            for(auto it:curr){
+            for(auto &it:curr){
                 ans=min(ans,abs(it-k));
             }
             prev=curr;
