@@ -15,7 +15,7 @@ public:
         group[size[y]]--;
         size[y]+=size[x];
         parent[x]=y;
-        size[x]=0;
+        // size[x]=0;
         group[size[y]]++;
     }
     int findLatestStep(vector<int>& arr, int m) {
@@ -33,14 +33,6 @@ public:
             int x=arr[i]-1;
             group[1]++;
             vis[x]=1;
-            // for(int i=0;i<n;i++){
-            //     cout<<group[i]<<" ";
-            // }
-            // cout<<endl;
-            // for(int i=0;i<n;i++){
-            //     cout<<size[i]<<" ";
-            // }
-            // cout<<endl<<endl<<endl;
             if(x+1<n&&vis[x+1]){
                 merge(x,x+1);
             }
