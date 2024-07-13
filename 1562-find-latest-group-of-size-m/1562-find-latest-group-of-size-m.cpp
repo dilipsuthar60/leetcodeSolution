@@ -15,7 +15,6 @@ public:
         group[size[y]]--;
         size[y]+=size[x];
         parent[x]=y;
-        // size[x]=0;
         group[size[y]]++;
     }
     int findLatestStep(vector<int>& arr, int m) {
