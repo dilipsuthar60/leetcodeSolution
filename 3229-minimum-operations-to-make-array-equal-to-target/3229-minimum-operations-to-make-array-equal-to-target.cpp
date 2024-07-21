@@ -30,8 +30,8 @@ public:
         }
         long long operation=0;
         while(s.size()){
-            auto it=s.top();s.pop();
-            operation+=find(it.second);
+            operation+=find(s.top().second);
+            s.pop();
         }
         return operation;
     }
