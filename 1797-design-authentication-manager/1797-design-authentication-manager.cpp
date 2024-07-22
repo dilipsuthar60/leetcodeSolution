@@ -7,19 +7,19 @@ public:
     }
     
     void generate(string tokenId, int currentTime) {
-        mp[tokenId]=currentTime;
+        mp[tokenId]=currentTime+timeToLive;
     }
     
     void renew(string tokenId, int currentTime) {
-        if(mp.find(tokenId)!=mp.end()&&currentTime-mp[tokenId]<timeToLive){
-            mp[tokenId]=currentTime;
+        if(mp.find(tokenId)!=mp.end()&&mp[tokenId]>currentTime){
+            mp[tokenId]=currentTime+timeToLive;
         }
     }
     
     int countUnexpiredTokens(int currentTime) {
         int count=0;
         for(auto &it:mp){
-            if(currentTime-it.second<timeToLive) count++;
+            if(it.second>currentTime) count++;
         }
         return count;
     }
