@@ -2,8 +2,7 @@ class Solution {
 public:
     int find(vector<vector<int>>&nums,int n,int m,int i,int j){
         if(i<0||j<0||i>=n||j>=m||nums[i][j]==0) return 0;
-        int res=nums[i][j];
-        nums[i][j]=0;
+        int res=exchange(nums[i][j],0);
         int op1=find(nums,n,m,i+1,j);
         int op2=find(nums,n,m,i-1,j);
         int op3=find(nums,n,m,i,j+1);
