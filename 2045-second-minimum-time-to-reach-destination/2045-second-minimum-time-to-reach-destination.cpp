@@ -8,11 +8,11 @@ public:
         }
         vector<int>dis1(n+1,1e9);
         vector<int>dis2(n+1,1e9);
-        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        queue<pair<int,int>>pq;
         pq.push({0,1});
         dis1[1]=0;
         while(pq.size()){
-            auto [currentTime,node]=pq.top();
+            auto [currentTime,node]=pq.front();
             pq.pop();
             if(node==n&&dis2[node]!=1e9) break;
             int section=currentTime/change;
