@@ -14,6 +14,7 @@ public:
         while(pq.size()){
             auto [currentTime,node]=pq.front();
             pq.pop();
+            if(currentTime>dis2[node]) continue;
             if(node==n&&dis2[node]!=1e9) break;
             int section=currentTime/change;
             if(section&1){
