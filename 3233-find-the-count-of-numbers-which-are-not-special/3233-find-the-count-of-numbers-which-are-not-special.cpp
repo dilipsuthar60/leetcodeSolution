@@ -4,7 +4,7 @@ public:
         int limit=sqrt(r);
         vector<bool>prime(limit+1,true);
         prime[0]=prime[1]=false;
-        for(int i=2;i<=limit;i++){
+        for(int i=2;i*i<=limit;i++){
             if(prime[i]){
                 for(int j=2*i;j<=limit;j+=i){
                     prime[j]=false;
