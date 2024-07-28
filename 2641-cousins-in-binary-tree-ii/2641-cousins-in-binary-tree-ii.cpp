@@ -1,6 +1,12 @@
 class Solution {
 public:
-    int mp[100005];
+    vector<int>mp;
+    int getHeightOfTree(TreeNode*root){
+        if(!root) return 0;
+        int left=getHeightOfTree(root->left);
+        int right=getHeightOfTree(root->right);
+        return max(left,right)+1;
+    }
     void dfs(TreeNode* root,int level=1){
         if(root==NULL) return;
         mp[level]+=root->val;
@@ -8,7 +14,8 @@ public:
         dfs(root->right,level+1);
     }
     TreeNode* replaceValueInTree(TreeNode* root) {
-        memset(mp,0,sizeof(mp));
+        int height =getHeightOfTree(root);
+        mp=vector<int>(height+2,0);
         dfs(root);
         queue<TreeNode*>q;
         q.push(root);
