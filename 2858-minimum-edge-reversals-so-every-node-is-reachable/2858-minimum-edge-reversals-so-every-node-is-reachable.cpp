@@ -19,7 +19,7 @@ public:
         }
     }
     vector<int> minEdgeReversals(int n, vector<vector<int>>& edges) {
-        dp=vector<vector<pair<int,int>>>(n+10);
+        dp=vector<vector<pair<int,int>>>(n);
         for(auto &it:edges){
             dp[it[0]].push_back({it[1],0});
             dp[it[1]].push_back({it[0],1});
