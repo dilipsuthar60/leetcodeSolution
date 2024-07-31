@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<pair<int,int>>dp[100005];
+    vector<vector<pair<int,int>>>dp;
     int dfs1(int node,vector<int>&vis){
         int sum=0;
         vis[node]=1;
@@ -19,6 +19,7 @@ public:
         }
     }
     vector<int> minEdgeReversals(int n, vector<vector<int>>& edges) {
+        dp=vector<vector<pair<int,int>>>(n+10);
         for(auto &it:edges){
             dp[it[0]].push_back({it[1],0});
             dp[it[1]].push_back({it[0],1});
