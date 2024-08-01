@@ -6,7 +6,7 @@ public:
         int result=0;
         for(int i=0;i<n;i++){
             one+=(s[i]-'0');
-            if(i&&s[i]=='0'&&s[i-1]=='1'){
+            if(i>0&&s[i]=='0'&&s[i-1]=='1'){
                 result+=one;
             }
         }
