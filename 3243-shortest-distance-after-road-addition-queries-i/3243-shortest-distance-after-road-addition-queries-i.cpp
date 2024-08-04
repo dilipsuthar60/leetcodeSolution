@@ -21,7 +21,6 @@ public:
                 for(int j=0;j<size;j++){
                     auto temp=q.front();
                     q.pop();
-                    // cout<<"level  "<<level<<"   "<<temp<<"  ";
                     if(temp==n-1){
                         flag=1;
                         break;
@@ -36,7 +35,6 @@ public:
                 if(flag) break;
                 level++;
             }
-            // cout<<endl<<"new "<<endl;
             ans[i]=level;
         }
         return ans;
