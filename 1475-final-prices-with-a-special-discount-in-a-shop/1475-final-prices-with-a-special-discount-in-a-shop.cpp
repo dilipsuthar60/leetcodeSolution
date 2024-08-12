@@ -8,12 +8,9 @@ public:
             while(s.size()&&s.top()>nums[i]){
                 s.pop();
             }
-            nextSmaller[i]=(s.size())?(s.top()):-1;
+            int value=(s.size())?(s.top()):0;
             s.push(nums[i]);
-        }
-        for(int i=0;i<n;i++){
-            if(nextSmaller[i]==-1) continue;
-            nums[i]-=nextSmaller[i];
+            nums[i]-=value;
         }
         return nums;
     }
