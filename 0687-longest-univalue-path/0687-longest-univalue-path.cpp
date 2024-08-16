@@ -11,30 +11,21 @@
  */
 class Solution {
 public:
-    int find(TreeNode*root,int &sum)
+    int ans=0;
+    int find(TreeNode*root,int parent)
     {
         if(root==NULL)
         {
             return 0;
         }
-        int left=find(root->left,sum);
-        int right=find(root->right,sum);
-        int l=0,r=0;
-        if(root->left!=NULL&&root->left->val==root->val)
-        {
-            l=left+1;
-        }
-        if(root->right!=NULL&&root->right->val==root->val)
-        {
-            r=right+1;
-        }
-        sum=max(sum,l+r);
-        return max(l,r);
+        int left=find(root->left,root->val);
+        int right=find(root->right,root->val);
+        ans=max(ans,left+right);
+        return (root->val==parent)?max(left,right)+1:0;
     }
     int longestUnivaluePath(TreeNode* root) 
     {
-        int ans=0;
-        find(root,ans);
+        find(root,-1);
         return ans;
     }
 };
