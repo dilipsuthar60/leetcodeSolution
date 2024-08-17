@@ -1,6 +1,6 @@
 class Solution {
 public:
-    long long dp[101][105][105][4];
+    long long dp[101][102][102][3];
     long long find(vector<vector<pair<int,int>>>&nums,int index,int col1,int col2,int k){
         if(index>=nums.size()||k>=3){
             return k==3?0:-1e18;
