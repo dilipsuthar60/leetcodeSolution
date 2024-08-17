@@ -31,7 +31,6 @@ public:
                 nums[i].pop_back();
             }
         }
-        long long value=find(nums,0,-1,-1,0);
-        return value;
+        return find(nums,0,-1,-1,0);
     }
 };
