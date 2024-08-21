@@ -1,27 +1,18 @@
 class Solution {
 public:
     long long numberOfPairs(vector<int>& nums1, vector<int>& nums2, int k) {
-        int n=nums1.size();
-        int m=nums2.size();
+        long long ans=0;
         unordered_map<int,int>mp;
-        for(int i=0;i<m;i++){
-            mp[nums2[i]*k]++;
-        }
-        long long result=0;
-        for(int i=0;i<n;i++)
-        {
-            int currentElement=nums1[i];
-            for(int i=1;i*i<=currentElement;i++)
-            {
-                if(currentElement%i==0)
-                {
-                    result+=mp[i];
-                    if(currentElement/i!=i){
-                        result+=mp[currentElement/i];
-                    }
-                }
+        for(auto &number:nums1){
+            for(int i=1;i*i<=number;i++){
+                if(i*i==number) mp[i]++;
+                else if(number%i==0){ mp[i]++,mp[number/i]++;}
             }
         }
-        return result;
+        for(auto &num:nums2){
+            int looking=num*k;
+            if(mp.find(looking)!=mp.end()) ans+=mp[looking];
+        }
+        return ans;
     }
 };
