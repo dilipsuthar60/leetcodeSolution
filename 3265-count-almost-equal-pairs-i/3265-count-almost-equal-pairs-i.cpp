@@ -1,11 +1,12 @@
 class Solution {
 public:
-    void find(string &s,unordered_set<string>&st){
+    void find(string &s,int index,int swaps,unordered_set<string>&st){
+        if(swaps>1) return ;
         st.insert(s);
-        for(int i=0;i<s.size();i++){
+        for(int i=index;i<s.size();i++){
             for(int j=i+1;j<s.size();j++){
                 swap(s[i],s[j]);
-                st.insert(s);
+                find(s,index+1,swaps+1,st);
                 swap(s[i],s[j]);
             }
         }
@@ -34,7 +35,7 @@ public:
         int count=0;
         for(int i=1;i<n;i++){
             unordered_set<string>st;
-            find(v[i],st);
+            find(v[i],0,0,st);
             for(auto &it:st){
                 if(mp.find(it)!=mp.end()){
                     count+=mp[it];
