@@ -29,17 +29,18 @@ public:
         for(int i=0;i<n;i++){
             v.push_back(getIntToString(nums[i],digit));
         }
+        unordered_map<string,int>mp;
+        mp[v.front()]++;
         int count=0;
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                unordered_set<string>st;
-                find(v[j],st);
-                for(auto &it:st){
-                    if(it==v[i]){
-                        count++;
-                    }
+        for(int i=1;i<n;i++){
+            unordered_set<string>st;
+            find(v[i],st);
+            for(auto &it:st){
+                if(mp.find(it)!=mp.end()){
+                    count+=mp[it];
                 }
             }
+            mp[v[i]]++;
         }
         return count;
     }
