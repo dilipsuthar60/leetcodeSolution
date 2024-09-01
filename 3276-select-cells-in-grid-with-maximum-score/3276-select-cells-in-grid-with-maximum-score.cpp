@@ -1,5 +1,6 @@
 class Solution {
 public:
+    int maxValue=0;
     vector<int>mat[101];
     int dp[101][(1<<10)+1];
     int find(int num,int mask){
@@ -17,8 +18,9 @@ public:
         for(int i=0;i<grid.size();i++){
             for(int j=0;j<grid[0].size();j++){
                 mat[grid[i][j]].push_back(i);
+                maxValue=max(maxValue,grid[i][j]);
             }
         }
-        return find(100,0);
+        return find(maxValue,0);
     }
 };
