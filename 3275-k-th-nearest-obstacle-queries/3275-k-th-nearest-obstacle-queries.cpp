@@ -12,9 +12,7 @@ public:
                 auto top=pq.top();
                 pq.pop();
             }
-            if(pq.size()==k){
-                ans[i]=pq.top();
-            }
+            ans[i]=(pq.size()<k)?-1:pq.top();
         }
         return ans;
     }
