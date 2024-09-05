@@ -2,7 +2,8 @@ class Solution {
 public:
     vector<int> maximumSubarrayXor(vector<int>& nums, vector<vector<int>>& queries) {
         int n=nums.size();
-        vector<vector<int>>dp(n,vector<int>(n,0));
+        int dp[n][n];
+        memset(dp,0,sizeof(dp));
         for(int gap=0;gap<n;gap++){
             for(int i=0,j=gap;j<n;j++,i++){
                 if(gap==0){
