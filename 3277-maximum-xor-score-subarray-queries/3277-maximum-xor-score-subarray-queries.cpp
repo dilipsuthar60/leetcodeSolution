@@ -17,12 +17,12 @@ public:
                 }
             }
         }
-        for(int gap=0;gap<n;gap++){
+        for(int gap=1;gap<n;gap++){
             for(int i=0,j=gap;j<n;j++,i++){
                 if(gap==1){
                     dp[i][j]=max({dp[i][j],nums[i],nums[j]});
                 }
-                else if(gap>1){
+                else{
                     dp[i][j]=max({dp[i][j],dp[i+1][j],dp[i][j-1]});
                 }
             }
