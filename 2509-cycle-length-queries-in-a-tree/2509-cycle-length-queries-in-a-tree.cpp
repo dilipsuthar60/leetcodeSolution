@@ -8,11 +8,9 @@ public:
             int count=0;
             while(a!=b){
                 if(a<b){
-                    b/=2;
+                    swap(a,b);
                 }
-                else{
-                    a/=2;
-                }
+                a/=2;
                 count++;
             }
             ans.push_back(count+1);
