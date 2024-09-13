@@ -16,7 +16,7 @@ public:
         int ans=0;
         while(left<=right){
             int mid=(left+right)/2;
-            if(find(nums,mid,p)){
+            if(find(nums, mid, p)){
                 ans=mid;
                 right=mid-1;
             }
