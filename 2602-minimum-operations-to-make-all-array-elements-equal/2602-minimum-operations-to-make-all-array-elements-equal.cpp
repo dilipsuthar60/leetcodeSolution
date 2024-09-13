@@ -1,18 +1,16 @@
 class Solution {
 public:
     int getLowerBound(vector<int>&nums, int value){
-        int l=0;
-        int r=nums.size()-1;
-        int mid=0;
-        int index=nums.size();
-        while(l<=r){
-            mid=(l+r)/2;
+        int size=nums.size();
+        int left=0,right=size-1,mid=0,index=size;
+        while(left<=right){
+            mid=(left+right)/2;
             if(nums[mid]>value){
                 index=mid;
-                r=mid-1;
+                right=mid-1;
             }
             else{
-                l=mid+1;
+                left=mid+1;
             }
         }
         return index;
