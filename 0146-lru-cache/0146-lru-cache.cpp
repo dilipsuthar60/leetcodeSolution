@@ -7,7 +7,7 @@ public:
         TreeNode*next;
         TreeNode*prev;
     };
-    map<int,TreeNode*>mp;
+    unordered_map<int,TreeNode*>mp;
     TreeNode*head;
     TreeNode*tail;
     int n;
