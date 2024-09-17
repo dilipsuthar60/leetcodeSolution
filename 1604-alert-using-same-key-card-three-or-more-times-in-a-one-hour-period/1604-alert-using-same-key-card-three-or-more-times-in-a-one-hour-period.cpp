@@ -4,7 +4,7 @@ public:
         return stoi(s.substr(0,2))*60+stoi(s.substr(3));
     }
     vector<string> alertNames(vector<string>& name, vector<string>&time) {
-        unordered_map<string,vector<int>>mp;
+        map<string,vector<int>>mp;
         int n=name.size();
         for(int i=0;i<n;i++){
             mp[name[i]].push_back(getHashValue(time[i]));
@@ -19,7 +19,6 @@ public:
                 }
             }
         }
-        sort(ans.begin(),ans.end());
         return ans;
     }
 };
