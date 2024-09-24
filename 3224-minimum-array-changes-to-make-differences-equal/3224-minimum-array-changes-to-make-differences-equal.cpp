@@ -8,8 +8,7 @@ public:
             int a=nums[i];
             int b=nums[n-i-1];
             mp[abs(a-b)]++;
-            int threshold = max(max(a, b), k - min(a, b));
-            limit.push_back(threshold);
+            limit.push_back(max({a,b,k-min(a,b)}));
         }
         sort(limit.begin(),limit.end());
         int ans=n/2;
