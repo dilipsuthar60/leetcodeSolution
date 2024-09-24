@@ -2,7 +2,7 @@ class Solution {
 public:
     int minChanges(vector<int>& nums, int k) {
         int n=nums.size();
-        vector<int>mp(k+1,0);
+        unordered_map<int,int>mp;
         vector<int>limit;
         for(int i=0;i<n/2;i++){
             int a=nums[i];
@@ -14,9 +14,9 @@ public:
         sort(limit.begin(),limit.end());
         int ans=n/2;
         n/=2;
-        for(int i=0;i<=k;i++){
-            int remaning=n-mp[i];
-            int greater=lower_bound(limit.begin(),limit.end(),i)-limit.begin();
+        for(auto &[diff,freq]:mp){
+            int remaning=n-freq;
+            int greater=lower_bound(limit.begin(),limit.end(),diff)-limit.begin();
             ans=min(ans,remaning+greater);
         }
         return ans;
