@@ -2,14 +2,10 @@ class Solution {
 public:
     int maxCoins(vector<int>& piles) {
         sort(piles.begin(),piles.end());
-        deque<int>dq;
-        for(auto &pile:piles) dq.push_back(pile);
+        int n=piles.size();
         int result=0;
-        while(dq.size()){
-            dq.pop_back();
-            result+=dq.back();
-            dq.pop_back();
-            dq.pop_front();
+        for(int i=n/3;i<n;i+=2){
+            result+=piles[i];
         }
         return result;
     }
