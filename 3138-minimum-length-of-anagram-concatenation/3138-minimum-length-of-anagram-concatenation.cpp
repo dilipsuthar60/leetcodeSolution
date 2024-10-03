@@ -28,10 +28,8 @@ public:
                 if(find(s,i)){
                     ans=min(ans,i);
                 }
-                if(n!=i*i){
-                    if(find(s,n/i)){
-                        ans=min(ans,n/i);
-                    }
+                if(find(s,n/i)){
+                    ans=min(ans,n/i);
                 }
             }
         }
