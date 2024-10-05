@@ -18,7 +18,7 @@ public:
         memset(dp,-1,sizeof(dp));
         int notSwapLast=find(nums1,nums2,0);
         swap(nums1.back(),nums2.back());
-        memset(dp,-1,sizeof(dp));
+        // memset(dp,-1,sizeof(dp));
         int swapLast=1+find(nums1,nums2,0);
         int ans=min(notSwapLast,swapLast);
         return ans>=1e8?-1:ans;
