@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int>dp[100005];
+    vector<vector<int>>dp;
     void find(int node,vector<int>&vis){
         vis[node]=1;
         for(auto &it:dp[node]){
@@ -10,6 +10,7 @@ public:
         }
     }
     vector<int> remainingMethods(int n, int k, vector<vector<int>>& invocations) {
+        dp=vector<vector<int>>(n+1);
         for(auto &it:invocations){
             dp[it[0]].push_back(it[1]);
         }
