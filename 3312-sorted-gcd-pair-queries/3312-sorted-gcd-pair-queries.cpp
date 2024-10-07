@@ -12,7 +12,8 @@ public:
     }
     vector<int> gcdValues(vector<int>& nums, vector<long long>& queries) {
         int maxElement=*max_element(nums.begin(),nums.end());
-        vector<long long>gcd(maxElement+1,0);
+        long long gcd[maxElement+1];
+        memset(gcd,0,sizeof(gcd));
         for(auto &num:nums){
             for(auto &f:getFactor(num)){
                 gcd[f]++;
@@ -31,7 +32,7 @@ public:
         }
         vector<int>ans;
         for(auto &query:queries){
-            auto index = lower_bound(gcd.begin(),gcd.end(),query+1)-gcd.begin();
+            auto index = lower_bound(gcd,gcd+maxElement,query+1)-gcd;
             ans.push_back(index);
         }
         return ans;
