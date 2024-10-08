@@ -1,7 +1,7 @@
 class Solution {
 public:
     int getHash(int x,int y){
-        return x*97+y*31+7;
+        return x*11+y;
     }
     int minAreaRect(vector<vector<int>>& points) {
         int n=points.size();
