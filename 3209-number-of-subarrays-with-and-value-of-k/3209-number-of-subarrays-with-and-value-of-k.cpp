@@ -1,17 +1,36 @@
 class Solution {
 public:
-    long long countSubarrays(vector<int>& nums, int k) {
-        unordered_map<int,long long>prev;
-        long long ans=0;
-        for(int i=0,n=nums.size();i<n;i++){
-            unordered_map<int,long long>curr;
-            for(auto &[key,value]:prev){
-                curr[key&nums[i]]+=value;
+    void update(vector<int>&bit,int num,int value){
+        for(int i=0;i<31;i++)
+        {
+            if(num&(1<<i)){
+                bit[i]+=value;
             }
-            curr[nums[i]]++;
-            ans+=curr[k];
-            prev=curr;
         }
-        return ans;
+    }
+    int getValue(vector<int>&bit,int count){
+        int result=0;
+        for(int i=0;i<31;i++)
+        {
+            if(bit[i]==count) result+=(1<<i);
+        }
+        return result;
+    }
+    long long find(vector<int>&nums,int k){
+        long long count=0;
+        int n=nums.size();
+        vector<int>bit(32,0);
+        for(int i=0,j=0;i<n;i++){
+            update(bit,nums[i],1);
+            while((i-j+1)>0&&getValue(bit,i-j+1)<k){
+                update(bit,nums[j],-1);
+                j++;
+            }
+            count+=(i-j+1);
+        }
+        return count;
+    }
+    long long countSubarrays(vector<int>& nums, int k) {
+        return find(nums,k)-find(nums,k+1);
     }
 };
