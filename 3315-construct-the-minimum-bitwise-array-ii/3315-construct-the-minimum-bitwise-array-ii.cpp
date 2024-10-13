@@ -13,8 +13,7 @@ public:
                     }
                 }
             }
-            if(result==1e9) ans[i]=-1;
-            else ans[i]=result;
+            ans[i]=(result==1e9)?-1:result;
         }
         return ans;
     }
