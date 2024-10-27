@@ -6,14 +6,15 @@ public:
         for(auto &ch:s) prev[ch-'a']++;
         while(t--){
             vector<long long>curr(26,0);
-            for(int i=0;i<25;i++){
-                curr[i+1]+=prev[i];
-                curr[i+1]%=mod;
+            for(int i=0;i<26;i++){
+                if(i==25){
+                    curr[0]=(curr[0]+prev[25])%mod;
+                    curr[1]=(curr[1]+prev[25])%mod;
+                }
+                else{
+                    curr[i+1]=(curr[i+1]+prev[i])%mod;
+                }
             }
-            curr[0]+=prev[25];
-            curr[1]+=prev[25];
-            curr[0]%=mod;
-            curr[1]%=mod;
             swap(curr,prev);
         }
         int result=0;
