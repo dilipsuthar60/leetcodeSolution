@@ -4,16 +4,16 @@ public:
         int n=nums.size();
         sort(nums.begin(),nums.end());
         int ans=-1;
-        unordered_set<long long>s;
-        for(auto &it:nums) s.insert(it);
+        unordered_map<long long,int>mp;
         for(int i=0;i<n;i++){
-            long long curr=nums[i];
-            int currentLen=1;
-            while(s.find(curr*curr)!=s.end()){
-                currentLen++;
-                curr=curr*curr;
+            int root=sqrt(nums[i]);
+            if(root*root==nums[i]&&mp.find(root)!=mp.end()){
+                mp[nums[i]]=mp[root]+1;
             }
-            ans=max(ans,currentLen);
+            else{
+                mp[nums[i]]=1;
+            }
+            ans=max(ans,mp[nums[i]]);
         }
         return ans>=2?ans:-1;
     }
