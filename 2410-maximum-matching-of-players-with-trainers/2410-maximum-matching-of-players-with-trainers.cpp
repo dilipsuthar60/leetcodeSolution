@@ -5,13 +5,8 @@ public:
         sort(t.begin(),t.end());
         int i=0,j=0;
         while(i<p.size()&&j<t.size()){
-            if(p[i]<=t[j]){
-                i++;
-                j++;
-            }
-            else{
-                j++;
-            }
+            if(p[i]<=t[j]) i++;
+            j++;
         }
         return i;
     }
