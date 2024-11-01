@@ -1,12 +1,18 @@
 class Solution {
 public:
-    vector<string>find(string &s){
-        stringstream ss(s);
+    vector<string>find(string &s,char separation = ':'){
         vector<string>ans;
-        string str;
-        while(getline(ss,str,':')){
-            ans.push_back(str);
+        string curr="";
+        for(int i=0;i<s.size();i++){
+            if(s[i]!=separation){
+                curr+=s[i];
+            }
+            else{
+                ans.push_back(curr);
+                curr="";
+            }
         }
+        ans.push_back(curr);
         return ans;
     }
     vector<int> exclusiveTime(int n, vector<string>& logs) {
