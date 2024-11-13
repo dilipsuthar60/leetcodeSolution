@@ -6,7 +6,7 @@ public:
         sort(nums.begin(),nums.end());
         long long countPair=0;
         while(l<r){
-            if((nums[l]+nums[r])<target){
+            if((nums[l]+nums[r])<=target){
                 countPair+=(r-l);
                 l++;
             }
@@ -19,6 +19,6 @@ public:
     long long countFairPairs(vector<int>& nums, int lower, int upper) {
         long long ans=0;
         sort(nums.begin(),nums.end());
-        return find(nums,upper+1)-find(nums,lower);
+        return find(nums,upper)-find(nums,lower-1);
     }
 };
