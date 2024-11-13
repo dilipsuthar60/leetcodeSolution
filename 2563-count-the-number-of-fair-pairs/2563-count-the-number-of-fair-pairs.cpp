@@ -1,13 +1,22 @@
 class Solution {
 public:
+    long long find(vector<int>&nums,int limit){
+        int n=nums.size();
+        long long count=0;
+        for(int l=0,r=n-1;l<r;){
+            if((nums[l]+nums[r])>limit){
+                r--;
+            }
+            else{
+                count+=(r-l);
+                l++;
+            }
+        }
+        return count;
+    }
     long long countFairPairs(vector<int>& nums, int lower, int upper) {
         long long ans=0;
         sort(nums.begin(),nums.end());
-        for(int i=0,n=nums.size();i<n;i++){
-            long long left=lower_bound(nums.begin()+i+1,nums.end(),lower-nums[i])-nums.begin();
-            long long right=upper_bound(nums.begin()+i+1,nums.end(),upper-nums[i])-nums.begin();
-            ans+=(right-left);
-        }
-        return ans;
+        return find(nums,upper)-find(nums,lower-1);
     }
 };
