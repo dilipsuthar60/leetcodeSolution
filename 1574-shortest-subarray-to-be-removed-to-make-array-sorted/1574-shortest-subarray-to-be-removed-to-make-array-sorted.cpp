@@ -17,6 +17,7 @@ public:
         {
             r--;
         }
+        
         int ans=min(n-l-1,r);
         int i=0;
         int j=r;
