@@ -5,9 +5,10 @@ struct node{
 class Solution {
 public:
     node *root=new node();
+    int MAXBIT=15;
     void insert(int num){
         node *current=root;
-        for(int i=20;i>=0;i--){
+        for(int i=MAXBIT;i>=0;i--){
             int bit=(num&(1<<i))>0?1:0;
             if(current->child[bit]==NULL){
                 current->child[bit]=new node();
@@ -49,8 +50,8 @@ public:
         int n=nums.size();
         int count=0;
         for(int i=0;i<n;i++){
-            count+=getPairCount(root,20,nums[i],high);
-            count-=getPairCount(root,20,nums[i],low-1);
+            count+=getPairCount(root,MAXBIT,nums[i],high);
+            count-=getPairCount(root,MAXBIT,nums[i],low-1);
             insert(nums[i]);
         }
         return count;
