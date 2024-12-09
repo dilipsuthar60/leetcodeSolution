@@ -17,7 +17,8 @@ public:
         if(isPrime[n]||isPrime[m]){
             return -1;
         }
-        unordered_set<int>visited;
+        bool visited[100005+10];
+        memset(visited,false,sizeof(visited));
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
         pq.push({n,n});
         while(!pq.empty()){
@@ -26,10 +27,10 @@ public:
             if(num==m){
                 return cost;
             }
-            if(visited.find(num)!=visited.end()){
+            if(visited[num]){
                 continue;
             }
-            visited.insert(num);
+            visited[num]=true;
             string current=to_string(num);
             for(int i=0;i<current.size();i++){
                 char original=current[i];
