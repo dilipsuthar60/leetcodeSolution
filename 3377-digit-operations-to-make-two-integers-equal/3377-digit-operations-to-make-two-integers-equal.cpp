@@ -17,8 +17,7 @@ public:
         if(isPrime[n]||isPrime[m]){
             return -1;
         }
-        bool visited[100005+10];
-        memset(visited,false,sizeof(visited));
+        vector<bool>visited(9999,0);
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
         pq.push({n,n});
         while(!pq.empty()){
