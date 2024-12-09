@@ -39,7 +39,7 @@ public:
                     if(!isPrime[number]){
                         pq.push({number+cost,number});
                     }
-                    current[i]=original;
+                    current[i]--;
                 }
                 if(current[i]!='0'){
                     current[i]--;
@@ -47,7 +47,7 @@ public:
                     if(!isPrime[number]){
                         pq.push({number+cost,number});
                     }
-                    current[i]=original;
+                    current[i]++;
                 }
             }
         }
