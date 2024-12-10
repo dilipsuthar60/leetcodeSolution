@@ -22,9 +22,15 @@ public:
     int maximumLength(string s) {
         int n=s.size();
         int ans=-1;
-        for(int len=1;len<=n;len++){
-            if(find(s,len)){
-                ans=max(ans,len);
+        int l=1,r=n-1;
+        while(l<=r){
+            int mid=(l+r)/2;
+            if(find(s,mid)){
+                ans=mid;
+                l=mid+1;
+            }
+            else{
+                r=mid-1;
             }
         }
         return ans;
