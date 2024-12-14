@@ -12,7 +12,7 @@ public:
         }
         ans.push_back(nums[dq.front()]);
         for(int i=k;i<n;i++){
-            if(dq.front()==i-k){
+            if(i-k==dq.front()){
                 dq.pop_front();
             }
             while(dq.size()&&nums[dq.back()]<nums[i]){
