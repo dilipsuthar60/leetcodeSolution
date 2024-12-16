@@ -2,8 +2,12 @@ class Solution {
 public:
     int find(vector<vector<int>>&mat,int mid){
         int count=0;
-        for(auto vec:mat){
-            count += upper_bound(vec.begin(),vec.end(),mid)-vec.begin();
+        int n=mat.size();
+        for(int i=0,j=n-1;i<n;i++){
+            while(j>=0&&mat[i][j]>mid){
+                j--;
+            }
+            count+=(j+1);
         }
         return count;
     }
