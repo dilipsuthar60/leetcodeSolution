@@ -1,31 +1,36 @@
 class Solution {
 public:
-    bool check(unordered_map<int,int>&mp){
-        for(auto &it:mp){
-            if(it.second>1){
-                return false;
-            }
-        }
-        return true;
-    }
     int minimumOperations(vector<int>& nums) {
         int n=nums.size();
         unordered_map<int,int>mp;
         for(auto &num:nums) mp[num]++;
-        if(check(mp)){
+        if(mp.size()==n){
             return 0;
         }
         int count=0;
+        int removeFirstElement=0;
         for(int i=0;i<n;i+=3){
             mp[nums[i]]--;
+            count++;
+            if(mp[nums[i]]==0){
+                mp.erase(nums[i]);
+            }
+            removeFirstElement++;
             if(i+1<n){
-                mp[nums[i+1]]--;
+               mp[nums[i+1]]--;
+                if(mp[nums[i+1]]==0){
+                    mp.erase(nums[i+1]);
+                }
+               removeFirstElement++; 
             }
             if(i+2<n){
-                mp[nums[i+2]]--;
+               mp[nums[i+2]]--;
+                if(mp[nums[i+2]]==0){
+                    mp.erase(nums[i+2]);
+                }
+               removeFirstElement++; 
             }
-            count++;
-            if(check(mp)){
+            if(mp.size()==(n-removeFirstElement)){
                 return count;
             }
         }
